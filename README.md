@@ -1,2 +1,3 @@
 # xisi-kernpruefungen
-Stellt Validierungen für alle Meldungen aus dem Payroll bereit
+
+Ziel dieser Bibliothek ist es, möglichst alle gängigen elektronischen Meldungen im Bereich des deutschen Payroll-Wesens auf einfache und umfassende Art zu validieren.
