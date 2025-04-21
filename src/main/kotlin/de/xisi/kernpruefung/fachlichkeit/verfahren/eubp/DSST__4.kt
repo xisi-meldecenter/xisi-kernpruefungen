@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE")
+@file:Suppress("UNUSED_VARIABLE", "ClassName")
 
 package de.xisi.kernpruefung.fachlichkeit.verfahren.eubp
 
