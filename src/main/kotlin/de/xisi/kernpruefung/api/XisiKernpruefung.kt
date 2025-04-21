@@ -19,19 +19,20 @@ sealed class XisiKernpruefung {
   abstract val verwendeteSpezifikation: String
   abstract val releaseNotes: Map<String, String>
 
-  private val resultat = Resultat()
+  private var resultat = Resultat()
 
   fun matchedName(datensatz: String): Boolean = when (this) {
-    is XisiXMLKernpruefung -> typeMatches(XMLReader.read(datensatz))
+    is XisiXMLKernpruefung -> datensatz.startsWith("<") && typeMatches(XMLReader.read(datensatz))
     is XisiKKSKernpruefung -> typeMatches(StringWalker(datensatz))
   }
 
   fun typeMatch(datensatz: String): Boolean = when (this) {
-    is XisiXMLKernpruefung -> versionMatches(XMLReader.read(datensatz))
+    is XisiXMLKernpruefung -> datensatz.startsWith("<") && versionMatches(XMLReader.read(datensatz))
     is XisiKKSKernpruefung -> versionMatches(StringWalker(datensatz))
   }
 
-  fun pruefeMeldung(meldung: String): Resultat {
+  fun pruefeMeldung(meldung: String, resultat: Resultat): Resultat {
+    this.resultat = resultat
     when (this) {
       is XisiXMLKernpruefung -> pruefeDatensatz(XMLReader.read(meldung))
       is XisiKKSKernpruefung -> pruefeDatensatz(StringWalker(meldung))

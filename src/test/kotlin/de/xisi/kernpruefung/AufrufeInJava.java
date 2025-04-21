@@ -6,7 +6,7 @@ public class AufrufeInJava {
     XisiKernpruefungsService xisiKernpruefung = new XisiKernpruefungsService();
 
     // ***** konfiguration
-    xisiKernpruefung.konfiguriere().logsEin();
+    xisiKernpruefung.konfiguriere().logLevelInfo();
     //xisiKernpruefung.konfiguriere().logsAus();
 
 

@@ -1,7 +1,5 @@
 package de.xisi.kernpruefung.api
 
-import de.xisi.kernpruefung.fachlichkeit.emptyToNull
-
 class Resultat {
   private val technischeFehler = ArrayList<TechnischerFehler>()
   private val fehler = ArrayList<Fehler>()
@@ -36,11 +34,13 @@ class Resultat {
   // ******************************************************************************************************************
 
   override fun toString(): String {
-    val msg = fehler.joinToString("\n") { "[FEHLER]        " + it.code.padEnd(12) + it.message + " (Feld: ${it.feld})" } +
-      technischeFehler.joinToString("\n") { "[Tech. FEHLER]  " + it.code.padEnd(12) + it.message } +
-      hinweise.joinToString("\n") { "[HINWEIS]       " + it.code.padEnd(12) + it.message }
+    val fehler: List<String> =
+      fehler.map { "[FEHLER]        " + it.code.padEnd(12) + it.message + " (Feld: ${it.feld})" } +
+        technischeFehler.map { "[Tech. FEHLER]  " + it.code.padEnd(12) + it.message } +
+        hinweise.map { "[HINWEIS]       " + it.code.padEnd(12) + it.message }
 
-    return msg.emptyToNull() ?: "- fehlerfrei -"
+
+    return if (fehler.isEmpty()) "- fehlerfrei -" else fehler.joinToString("\n")
   }
 }
 
