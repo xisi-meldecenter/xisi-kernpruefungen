@@ -57,7 +57,7 @@ class XisiKernpruefungsServiceTest {
     var res = xkps.pruefeMeldung(dsko_gueltig.replace("DSKO", "DSKU"))
     res.getTechnischeFehler().size mustBe 1
     res.getTechnischeFehler()[0].code mustBe "XISI-010"
-    res.getTechnischeFehler()[0].message mustBe "Fehler beim Ermitteln der Kernpruefung: Es konnte keine passende Kernprüfung automatisch ermittelt werden."
+    res.getTechnischeFehler()[0].message mustBe "Fehler beim Ermitteln der Kernpruefung: Es konnte keine passende Kernprüfung automatisch ermittelt werden. (DSKUDEUEV02233442   ..)"
 
 
     xkps.konfiguriere().wennKeineKPExistiertLoggeWarnung()
@@ -96,7 +96,7 @@ class XisiKernpruefungsServiceTest {
       it mustBeType IllegalStateException::class.java
       it.message mustBe """
         [FEHLER]        ABSN-X001   Absendernummer >0223344A< ist ungültig (Feld: ABSN)
-        [Tech. FEHLER]  XISI-010    Fehler beim Ermitteln der Kernpruefung: Es konnte keine passende Kernprüfung automatisch ermittelt werden.
+        [Tech. FEHLER]  XISI-010    Fehler beim Ermitteln der Kernpruefung: Es konnte keine passende Kernprüfung automatisch ermittelt werden. (DSKUDEUEV02233442   ..)
       """.trimIndent()
     }
   }

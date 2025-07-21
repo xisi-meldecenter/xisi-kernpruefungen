@@ -78,7 +78,7 @@ class XisiKernpruefungsService {
     meldungen.forEach { meldung ->
       pruefeMeldungIntern(meldung, type, version, resultat)
     }
-    return resultat 
+    return resultat
   }
 
 
@@ -98,7 +98,7 @@ class XisiKernpruefungsService {
     }
 
     else -> {
-      kernpruefungen.firstOrNull { it.typeMatch(meldung) && it.matchedName(meldung) } ?: error("Es konnte keine passende Kernprüfung automatisch ermittelt werden.")
+      kernpruefungen.firstOrNull { it.typeMatch(meldung) && it.matchedName(meldung) } ?: error("Es konnte keine passende Kernprüfung automatisch ermittelt werden. (${meldung.take(20)}..)")
     }
   }
 
