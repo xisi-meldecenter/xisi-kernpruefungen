@@ -13,7 +13,8 @@ object AllgemeinePruefungen {
   fun validesDatum1(datum: String?) = datum != null && datum.matches(validesDatum1)
 
   // yyyyMMddT
-  private val validesDatumOhneTrenner = "^20[0-9]{2}(12|11|10|0[1-9])((3)(0|1)|(1|2)[0-9]|(0)[1-9])$".toRegex()
+  // private val validesDatumOhneTrenner = "^20[0-9]{2}(12|11|10|0[1-9])((3)(0|1)|(1|2)[0-9]|(0)[1-9])$".toRegex()
+  private val validesDatumOhneTrenner = "^[0-9]{4}(12|11|10|0[1-9])((3)(0|1)|(1|2)[0-9]|(0)[1-9])$".toRegex()
   val datumOhneTrennerPattern = "yyyyMMdd"
   fun validesDatumOhneTrenner(datum: String?): Boolean {
     if (datum == null) return false
